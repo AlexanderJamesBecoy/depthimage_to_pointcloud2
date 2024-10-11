@@ -30,8 +30,8 @@ def generate_launch_description():
                      'use_quiet_nan': LaunchConfiguration('use_quiet_nan'),
                      'colorful': PythonExpression(["'true' if '", LaunchConfiguration('rgb_image_topic'), "' else 'false'"])}],
         remappings=[
-            ("image", PythonExpression(["'", LaunchConfiguration('rgb_image_topic'), "/image' if '", LaunchConfiguration('rgb_image_topic'), "' else 'false'"])),
-            ("depth", [LaunchConfiguration('full_sensor_topic'), "/image"]),
+            ("image", PythonExpression(["'", LaunchConfiguration('rgb_image_topic'), "/image_raw' if '", LaunchConfiguration('rgb_image_topic'), "' else 'false'"])),
+            ("depth", [LaunchConfiguration('full_sensor_topic'), "/image_rect_raw"]),
             ("depth_camera_info", [LaunchConfiguration('full_sensor_topic'), "/camera_info"]),
             ("pointcloud2", [PythonExpression(["'", LaunchConfiguration('full_sensor_topic'), "'.split('/')[-1]"]), "_pointcloud2"])
             ]
